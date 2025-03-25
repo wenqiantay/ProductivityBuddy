@@ -1,0 +1,20 @@
+
+<h1>Login</h1>
+
+<form [formGroup]="form" (submit)="processForm()">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" placeholder="Username" formControlName="username"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" placeholder="Password" formControlName="password"></td>
+        </tr>
+       <tr>
+        <td>
+            <button type="submit">Login</button>
+        </td>
+       </tr>
+    </table>
+</form>

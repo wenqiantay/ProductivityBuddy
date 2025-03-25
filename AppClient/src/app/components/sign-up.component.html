@@ -1,0 +1,51 @@
+<h2>Sign up</h2>
+
+<form [formGroup]="form" (submit)="processForm()">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td>
+                <input type="text" name="username" formControlName="username">
+            </td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input type="text" name="name" formControlName="name">
+            </td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>
+                <select formControlName="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input type="text" name="email" formControlName="email">
+            </td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td>
+                <input type="date" name="birthday" formControlName="birthdate">
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input type="password" name="password" formControlName="password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>

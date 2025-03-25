@@ -1,0 +1,19 @@
+<div class="body">
+    <div class="container">
+    <div class="todo">
+        <h2>To-do List:</h2>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Add a new task" [formControl]="input">
+            <button type="button" (click)="addTodo()">Add</button>
+        </div>
+        <ul class="list-container" (click)="handleClick($event)">
+                @for (t of todoList; let idx = $index; track t) {
+                    <li>
+                        {{ t }}
+                        <span><button type="button" (click)="deleteTodo(idx)">X</button></span>
+                    </li>
+                }
+        </ul>
+    </div>
+    </div>
+</div>
