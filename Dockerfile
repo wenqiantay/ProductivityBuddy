@@ -28,7 +28,7 @@ FROM openjdk:23-jdk
 
 WORKDIR /app
 
-COPY --from=j-build /src/target/server-0.0.1-SNAPSHOT.jar productivityapp.jar
+COPY --from=j-build /src/target/App-Server-0.0.1-SNAPSHOT.jar productivityapp.jar
 
 ENV PORT=8080
 

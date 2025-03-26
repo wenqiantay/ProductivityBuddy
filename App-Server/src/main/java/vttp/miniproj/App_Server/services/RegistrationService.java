@@ -44,7 +44,7 @@ public class RegistrationService {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-        String verificationUrl = "http://localhost:4200/verify?token=" + token;
+        String verificationUrl = "http://tender-cat-production.up.railway.app/verify?token=" + token;
 
         String htmlContent = "<p>Please click the button below to verify your email:</p>"
             + "<a href=\"" + verificationUrl + "\" style=\""
