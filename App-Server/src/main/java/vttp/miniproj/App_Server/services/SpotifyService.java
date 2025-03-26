@@ -278,7 +278,7 @@ public class SpotifyService {
     }
 
     public String refreshSpotifyAccessToken(String refreshToken) {
-        // Use the Spotify refresh token to get a new access token
+        
         String refreshUrl = "https://accounts.spotify.com/api/token";
         String requestBody = String.format("grant_type=refresh_token&refresh_token=%s&client_id=%s&client_secret=%s",
                 refreshToken, spotifyClientId, spotifyClientSecret);
@@ -290,12 +290,10 @@ public class SpotifyService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(refreshUrl, HttpMethod.POST, entity, String.class);
     
-        // Extract the new access token from the response
         JsonReader reader = Json.createReader(new StringReader(response.getBody()));
         JsonObject jsonResponse = reader.readObject();
         String newAccessToken = jsonResponse.getString("access_token");
     
-        // Return the new access token
         return newAccessToken;
     }
 
