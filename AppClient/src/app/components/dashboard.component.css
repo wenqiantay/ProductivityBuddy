@@ -168,7 +168,7 @@
 
 .todo {
     width: 100%;
-    background: #FCC7D6; /* Light pink background matching your design */
+    background:lightpink;
     padding: 30px;
     border-radius: 10px;
     display: flex;
