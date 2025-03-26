@@ -31,7 +31,7 @@ createForm() {
     gender: this.fb.control<string>('', [Validators.required]),
     email: this.fb.control<string>('', [Validators.email]),
     birthdate: this.fb.control<string>('',[Validators.required]),
-    password: this.fb.control<string>('', [Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')]),
+    password: this.fb.control<string>('', [Validators.required]),
   })
 }
 
