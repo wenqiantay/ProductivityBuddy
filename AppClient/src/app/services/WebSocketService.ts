@@ -14,7 +14,7 @@ export class WebSocketService {
     // Connect to WebSocket server using RxStompService
     connect(): void {
       this.rxStompService.configure({
-        brokerURL: 'ws://tender-cat-production.up.railway.app/ws',  
+        brokerURL: 'wss://tender-cat-production.up.railway.app/ws',  
         connectHeaders: {},
         debug: (str) => {
           console.log(str); 
