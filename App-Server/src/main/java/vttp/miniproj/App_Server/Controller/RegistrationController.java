@@ -65,7 +65,7 @@ public class RegistrationController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/api/verify")
+    @GetMapping("/verify")
     public ResponseEntity<?> verifyEmail(@RequestParam("token") String token) {
     UserData user = registrationSvc.findByVerificationToken(token);
 
@@ -75,7 +75,7 @@ public class RegistrationController {
 
         return ResponseEntity
             .status(HttpStatus.FOUND)
-            .header("Location", "http://tender-cat-production.up.railway.app/verify")  // Modify this URL
+            .header("Location", "http://tender-cat-production.up.railway.app/verified")  // Modify this URL
             .build();
     } else {
         return ResponseEntity

@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'register', component: SignUpComponent },
   { path: 'verifyemail', component: EmailverificationComponent},
-  { path: 'verify', component: VerifiedComponent},
+  { path: 'verified', component: VerifiedComponent},
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
