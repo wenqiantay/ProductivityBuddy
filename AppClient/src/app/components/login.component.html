@@ -40,7 +40,7 @@
           <button type="submit" [disabled]="form.invalid">Login</button>
   
           <p class="signup-link">
-            Don't have an account? <a href="/register">Sign Up</a>
+            Don't have an account? <a [routerLink]="['/register']">Sign Up</a>
           </p>
         </form>
         <button (click)="goBack()" class="back-button">Back to Home</button>

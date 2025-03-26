@@ -103,7 +103,7 @@ export class MusicPlayerComponent implements OnInit, OnDestroy {
       'response_type=code' +
       `&client_id=${this.clientId}` +
       '&scope=streaming%20user-read-email%20user-read-private%20user-read-playback-state%20user-read-currently-playing%20user-modify-playback-state' +
-      '&redirect_uri=tender-cat-production.up.railway.app/auth/callback'; 
+      '&redirect_uri=https://tender-cat-production.up.railway.app/auth/callback'; 
 
     // Open the Spotify login page in a new popup window
     const width = 600
