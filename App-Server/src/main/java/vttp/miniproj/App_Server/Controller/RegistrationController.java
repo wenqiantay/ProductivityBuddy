@@ -72,7 +72,11 @@ public class RegistrationController {
     if (user != null) {
         String username = user.getUsername();
         registrationSvc.verifyUserManually(username);
-        return ResponseEntity.ok(Map.of("status", "success", "message", "Email verified"));
+
+        return ResponseEntity
+            .status(HttpStatus.FOUND)
+            .header("Location", "http://tender-cat-production.up.railway.app/verify")  // Modify this URL
+            .build();
     } else {
         return ResponseEntity
             .status(HttpStatus.BAD_REQUEST)

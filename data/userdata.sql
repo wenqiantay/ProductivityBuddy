@@ -7,10 +7,11 @@ create table user_data (
 	name varchar(128) not null,
     username varchar(80) not null unique,
     gender varchar(50) not null,
-    email varchar(128) not null,
+    email varchar(128) not null unique,
     birthdate date not null,
     password varchar(128) not null,
-    is_premium boolean default false,
+    is_verified int default 0,
+    verification_token varchar(255),
 	
     primary key(userid)
 );

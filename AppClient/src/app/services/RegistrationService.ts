@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { lastValueFrom, Observable } from "rxjs";
+import { catchError, lastValueFrom, Observable, throwError } from "rxjs";
 import { UserData } from "../model/model";
 
 Injectable() 
@@ -24,8 +24,12 @@ export class RegistrationService {
     }
 
     verifiedEmail(token: string): Observable<{ status: string; message: string }> {
-
-        return this.http.get<{ status: string, message: string }>(`/api/verify?token=${token}`)
-
-    }
+        return this.http.get<{ status: string, message: string }>(`/api/verify?token=${token}`).pipe(
+          catchError((error) => {
+            console.error('Error verifying email:', error);
+            return throwError(() => new Error('Email verification failed. Please try again later.'));
+          })
+        );
+      }
+      
 }

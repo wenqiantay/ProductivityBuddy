@@ -15,21 +15,35 @@ export class VerifiedComponent implements OnInit{
   private registrationSvc = inject(RegistrationService)
 
   verificationMessage: string = 'Verifying...'
+  errorMessage: string | null = null; 
 
   ngOnInit(): void {
-    const token = this.route.snapshot.queryParamMap.get('token')
-  
+    const token = this.route.snapshot.queryParamMap.get('token');
+
     if (token) {
+      
       this.registrationSvc.verifiedEmail(token).subscribe({
         next: (res) => {
           if (res.status === 'success') {
-            this.verificationMessage = '✅ Email successfully verified!'
-            this.router.navigate(['/verify'])
+
+
+            this.verificationMessage = '✅ Email successfully verified!';
+            setTimeout(() => {
+              
+              this.router.navigate(['/login']);  
+            }, 2000); 
           }
+        },
+        error: (err) => {
+          
+          this.errorMessage = '❌ Email verification failed. Please try again later.';
+          console.error('Verification failed:', err);
         }
-      })
+      });
+    } else {
+      this.errorMessage = '❌ Invalid or missing token.';
+    }
   }
-}
 
 }
   

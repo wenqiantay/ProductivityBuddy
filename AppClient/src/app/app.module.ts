@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'register', component: SignUpComponent },
   { path: 'verifyemail', component: EmailverificationComponent},
   { path: 'verify', component: VerifiedComponent},
+  { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({

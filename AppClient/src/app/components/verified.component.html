@@ -1,4 +1,8 @@
 <div class="verification-container">
-    <h2>{{ verificationMessage }}</h2>
-    <button type="button" [routerLink]="['/login']">Back to login</button>
-</div>
+    <h1>Email Verification</h1>
+  
+    <p *ngIf="verificationMessage" class="success-message">{{ verificationMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  
+    <!-- You can add more custom styling or logic here if needed -->
+  </div>
