@@ -13,6 +13,6 @@ public class RedisConfig extends AbstractHttpSessionApplicationInitializer {
 
      @Bean
     public RedisConnectionFactory connectionFactory() {
-        return new LettuceConnectionFactory("tender-cat-production.up.railway.app", 29685);
+        return new LettuceConnectionFactory("tramway.proxy.rlwy.net", 29685);
     }
 }
