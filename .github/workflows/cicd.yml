@@ -22,7 +22,7 @@ jobs:
           username: wenqiantay
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Build Docker image with secrets as build args
+      
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
