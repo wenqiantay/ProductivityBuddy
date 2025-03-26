@@ -27,7 +27,8 @@ public class RegistrationService {
 
         String token = UUID.randomUUID().toString();
         userData.setVerificationToken(token);
-        userData.setVerified(false);
+        System.out.println(userData.getVerificationToken());
+        userData.setIsVerified(0);
 
         userRepo.insertUserData(userData);
         sendConfirmationEmail(userData.getEmail(), token);
@@ -62,8 +63,12 @@ public class RegistrationService {
         }
     }
 
-    public boolean verifyUserByToken(String token) {
-        return userRepo.verifyUserByToken(token);
+    public void verifyUserManually(String username) {
+        userRepo.verifyUserManually(username);
+    }
+
+    public UserData findByVerificationToken(String token) {
+        return userRepo.findByVerificationToken(token);
     }
 
     public boolean checkUsernameExist(String username) {

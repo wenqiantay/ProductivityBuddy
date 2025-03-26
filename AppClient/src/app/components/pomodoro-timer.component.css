@@ -1,74 +1,86 @@
-.container {
-    padding: 0;
-    margin: 0;
+/* Scope only Pomodoro */
+.pomodoro-container {
+    width: 100%;
+    background-color: #f8d8e4;
+    padding: 2em;
+    border-radius: 15px;
     box-sizing: border-box;
     font-family: sans-serif;
-    background-color: lightpink;
-    width: min(90%, 500px);
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    padding: 4em 2em;
-    border-radius: 0.5em;
-}
-
-button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
-.section-container {
+  }
+  
+  .section-container {
     display: flex;
     gap: 1em;
     justify-content: center;
-}
-
-.btn {
-    padding: 1em 2em;
-    border-radius: 0.5em;
-    background-color: rgb(139, 122, 127);
-    color: azure;
-}
-
-.time-btn-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1em;
-}
-
-#time {
-    text-align: center;
-    color: #fff;
-    font-size: 5em;
-    font-weight: 600;
-    margin-bottom: 0.2em;
-}
-
-.btn-container {
-    display: flex;
-    justify-content: center;
-    gap: 2em;
-}
-
-#btn-start, #btn-pause, #btn-reset {
-    border-radius: 0.5em;
-    padding: 1em 2em;
-    cursor: pointer;
-    background-color: #fff;
-}
-
-.show {
-    display: block;
-}
-
-#btn-start:hover, #btn-pause:hover, #btn-reset:hover {
-    background: palevioletred;
-}
-
-.active {
-    background-color: rgba(223, 52, 129, 0.838) !important;
+    margin-bottom: 1.5em;
+  }
+  
+  .btn {
+    padding: 0.8em 1.6em;
+    border-radius: 8px;
+    background-color: #8b7a7f;
+    color: white;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #a39097;
+  }
+  
+  .active {
+    background-color: #de5b92 !important;
     color: white;
     font-weight: bold;
-}
+  }
+  
+  .time-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #time {
+    font-size: 4em;
+    font-weight: 600;
+    color: black;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #f4b3c2;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background-color: #d46a8b;
+    transition: width 0.2s ease-in-out;
+  }
+  
+  .btn-container {
+    display: flex;
+    gap: 1em;
+  }
+  
+  #btn-start,
+  #btn-pause,
+  #btn-reset {
+    padding: 0.8em 1.6em;
+    border-radius: 8px;
+    background-color: white;
+    color: palevioletred;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  #btn-start:hover,
+  #btn-pause:hover,
+  #btn-reset:hover {
+    background-color: palevioletred;
+    color: white;
+  }
+  

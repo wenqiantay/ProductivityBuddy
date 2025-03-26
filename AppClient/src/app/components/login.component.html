@@ -1,20 +1,49 @@
-
-<h1>Login</h1>
-
-<form [formGroup]="form" (submit)="processForm()">
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><input type="text" placeholder="Username" formControlName="username"></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" placeholder="Password" formControlName="password"></td>
-        </tr>
-       <tr>
-        <td>
-            <button type="submit">Login</button>
-        </td>
-       </tr>
-    </table>
-</form>
+<section class="login-section">
+    <!-- Video Background -->
+    <video autoplay muted loop id="background-video">
+      <source src="/video/kawaiiroom_1.mp4" type="video/mp4">
+    </video>
+  
+    <!-- Overlay Content -->
+    <div class="overlay">
+      <div class="login-container">
+        <h1>Login</h1>
+  
+        <!-- Login Form with FormGroup and FormControls -->
+        <form [formGroup]="form" (ngSubmit)="processForm()">
+          <div class="input-group">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              formControlName="username"
+            />
+            <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+              <small class="error-message">Username is required.</small>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+              <small class="error-message">Password is required.</small>
+            </div>
+          </div>
+  
+          <button type="submit" [disabled]="form.invalid">Login</button>
+  
+          <p class="signup-link">
+            Don't have an account? <a href="/signup">Sign Up</a>
+          </p>
+        </form>
+        <button (click)="goBack()" class="back-button">Back to Home</button>
+      </div>
+    </div>
+  </section>

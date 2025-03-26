@@ -64,4 +64,8 @@ processForm() {
   })
 }
 
+goBack() {
+  this.router.navigate(['/'])
+}
+
 }

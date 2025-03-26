@@ -6,6 +6,7 @@ import { GoogleClient, Login } from '../model/model';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/LoginService';
+import { UserStore } from '../user.store';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit{
 
   private loginSvc = inject(LoginService)
   private router = inject(Router)
+
+  private userStore = inject(UserStore)
 
   ngOnInit(): void {
     
@@ -47,12 +50,31 @@ export class LoginComponent implements OnInit{
 
     this.loginSvc.postLogin(this.loginData).then( response => {
       console.log(response)
+
+      const userId = response.userId
+      const username = response.username
+      const email = response.email
+
+      this.userStore.setEmail(email)
+      this.userStore.setUserId(userId)
+      this.userStore.setUserName(username)
+
+      localStorage.setItem('userData', JSON.stringify({
+        userId,
+        username,
+        email
+      }))
+      
       this.router.navigate(['/dashboard'])
     }).catch(err => {
       console.log(err)
-      alert(`Login failed: ${err.message || 'An unknown error occurred.'}`);
+      alert(`Login failed: ${err.message || 'An unknown error occurred.'}`)
     })
 
+  }
+
+  goBack() {
+    this.router.navigate(['/'])
   }
 
 

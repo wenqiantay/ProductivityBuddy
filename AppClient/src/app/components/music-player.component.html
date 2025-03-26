@@ -1,35 +1,36 @@
-<div class="container">
+
+<div class="music-player">
     <div class="spotifyLogin">
       <button type="button" class="btn-spotify" (click)="spotifyLogin()">Login to Spotify</button>
       <button type="button" class="btn-spotify" (click)="logoutSpotify()">Logout Spotify</button>
     </div>
   
-    <div class="music-player">
-      <h1 class="music-name">{{ currentSong?.songName }}</h1>
-      <p class="artist-name">{{ currentSong?.artistName?.join(', ') }}</p>
+    <h1 class="music-name">{{ currentSong.songName }}</h1>
+    <p class="artist-name">{{ currentSong.artistName.join(', ') || 'Unknown Artist' }}</p>
   
-      <div class="disk play">
-        <img [src]="currentSong?.imageUrl" alt="Album Image" />
-      </div>
+    <div class="disk play">
+      <img [src]="currentSong.imageUrl" alt="Album Image" />
+    </div>
   
-      <div class="song-slider">
-        <input type="range" class="seek-bar" [value]="currentSong.progress" [max]="currentSong?.duration" (input)="updateCurrentTime($event)" />
+    <div class="song-slider">
+      <input type="range" class="seek-bar" [value]="currentSong.progress" [max]="currentSong.duration" (input)="updateCurrentTime($event)" />
+      <div class="time-stamps">
         <span class="current-time">{{ formatDuration(currentSong.progress) }}</span>
         <span class="song-duration">{{ getFormattedDuration() }}</span>
       </div>
+    </div>
   
-      <div class="controls">
-        <button type="button" class="btn frontward-btn" (click)="previousTrack()">
-          <img src="images/pre.png" />
-        </button>
-        <button type="button" class="play-btn pause" (click)="togglePlayPause()">
-          <span></span>
-          <span></span>
-        </button>
-        <button type="button" class="btn backward-btn"(click)="nextTrack()">
-          <img src="images/nxt.png" />
-        </button>
-      </div>
+    <div class="controls">
+      <button type="button" class="btn frontward-btn" (click)="previousTrack()">
+        <img src="images/pre.png" />
+      </button>
+      <button type="button" class="play-btn pause" (click)="togglePlayPause()">
+        <span></span>
+        <span></span>
+      </button>
+      <button type="button" class="btn backward-btn" (click)="nextTrack()">
+        <img src="images/nxt.png" />
+      </button>
     </div>
   </div>
   

@@ -16,21 +16,18 @@ public class LoginService {
     public boolean login(String username, String password) {
 
         UserData user = userRepo.findByUsername(username);
+        System.out.println(user.toString());
 
-        if (user == null) {
-            return false;
-        }
+       if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
+            if(user.getIsVerified() == 1)
+         return true;
 
-        if(!password.equals(user.getPassword())) {
-            return false;
-        }
+       } 
 
-        if (!user.isVerified()) {
-            return false; 
-        }
-
-        return true;
-
-    }   
+       return false;
+    } 
     
+    public UserData getUserData(String username) {
+        return userRepo.findByUsername(username);
+    }
 }

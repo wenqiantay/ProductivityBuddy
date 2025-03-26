@@ -1,0 +1,163 @@
+/* Full-page layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+  }
+  
+  /* Video Background */
+  #background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  /* Overlay for content */
+  .overlay {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5); 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Sign-up form container */
+  .login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;  
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    font-family: sans-serif;
+  }
+  
+  /* Header styling */
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields */
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 8px;
+  }
+  
+  .input-group input:focus,
+  .input-group select:focus {
+    outline: none;
+    border-color: palevioletred;
+    box-shadow: 0 0 8px rgba(76, 110, 245, 0.3);
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: palevioletred;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #365ed3;
+  }
+  
+  /* Error message for validation */
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+  }
+  
+  /* Signup link */
+  .signup-link {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .signup-link a {
+    color: #4c6ef5;
+    text-decoration: none;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Back button styling */
+  .back-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    background-color: lightcoral;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+  }
+  
+  .back-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 600px) {
+    .login-container {
+      width: 90%;
+      padding: 20px 30px;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    button[type="submit"] {
+      font-size: 1.1rem;
+    }
+  
+    .back-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+  
+  

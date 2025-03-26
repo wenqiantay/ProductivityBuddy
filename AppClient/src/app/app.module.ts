@@ -17,15 +17,23 @@ import { VerifiedComponent } from './components/verified.component';
 import { WebSocketService } from './services/WebSocketService';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { LoginService } from './services/LoginService';
+import { EventCalendarComponent } from './components/event-calendar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventService } from './services/EventService';
+import { TodoService } from './services/TodoService';
+import { UserStore } from './user.store';
+import { AuthGuard } from './auth.guard';
+import { IndexComponent } from './components/index.component';
 
 const routes: Routes = [
+  { path: '', component: IndexComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'pomodoro', component: PomodoroTimerComponent},
-  { path: 'musicplayer', component: MusicPlayerComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'register', component: SignUpComponent },
   { path: 'verifyemail', component: EmailverificationComponent},
-  { path: 'verify', component: VerifiedComponent}
+  { path: 'verify', component: VerifiedComponent},
 ];
 
 @NgModule({
@@ -37,10 +45,12 @@ const routes: Routes = [
     PomodoroTimerComponent,
     MusicPlayerComponent,
     EmailverificationComponent,
-    VerifiedComponent
+    VerifiedComponent,
+    EventCalendarComponent,
+    IndexComponent,
   ],
-  imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes), FormsModule], 
-  providers:  [provideHttpClient(), SpotifyService, RegistrationService, WebSocketService, RxStompService, LoginService],
+  imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes), FormsModule, MatIconModule, MatButtonModule, BrowserAnimationsModule], 
+  providers:  [provideHttpClient(), SpotifyService, RegistrationService, WebSocketService, RxStompService, LoginService, EventService, TodoService, UserStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

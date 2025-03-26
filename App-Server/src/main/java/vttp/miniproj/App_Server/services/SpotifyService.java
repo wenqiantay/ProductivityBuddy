@@ -38,7 +38,7 @@ public class SpotifyService {
     @Value("${spotify.client.secret}")
     private String spotifyClientSecret;
 
-    private final String REDIRECT_URI = "http://localhost:8080/auth/callback";
+    private final String REDIRECT_URI = "https://tender-cat-production.up.railway.app/auth/callback";
     private static final String SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token";
     private static final String SPOTIFY_GET_CURRENT_PLAYING = "https://api.spotify.com/v1/me/player/currently-playing";
     private static final String SPOTIFY_GET_PLAYBACK_STATE="https://api.spotify.com/v1/me/player";

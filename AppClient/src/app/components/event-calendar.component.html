@@ -1,0 +1,133 @@
+<div class="container">
+    <!-- Left Calendar Panel -->
+    <div class="left">
+      <div class="calendar">
+        <!-- Month Header -->
+        <div class="month">
+          <button mat-icon-button (click)="prevMonth()">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <div class="date">{{ months[month] }} {{ year }}</div>
+          <button mat-icon-button (click)="nextMonth()">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+  
+        <!-- Weekdays Header -->
+        <div class="weekdays">
+          <div *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">
+            {{ day }}
+          </div>
+        </div>
+  
+        <!-- Calendar Days -->
+        <div class="days">
+          <div
+            *ngFor="let day of days"
+            class="day"
+            [class.today]="day.isToday"
+            [class.active]="day.isActive"
+            [class.prev-date]="day.isPrev"
+            [class.next-date]="day.isNext"
+            [class.event]="day.hasEvent"
+            (click)="onDayClick(day)"
+          >
+            {{ day.date }}
+          </div>
+        </div>
+  
+        <!-- Goto / Today Controls -->
+        <div class="goto-today">
+          <div class="goto">
+            <input
+              type="text"
+              placeholder="mm/yyyy"
+              [(ngModel)]="gotoDateInput"
+              (input)="onDateInput($event)"
+            />
+            <button (click)="gotoDate()">Go</button>
+          </div>
+          <button (click)="goToToday()">Today</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Right Event Panel -->
+    <div class="right">
+      <!-- Selected Date Info -->
+      <div class="today-date">
+        <div class="event-day">{{ selectedDayName }}</div>
+        <div class="event-date">{{ selectedDateText }}</div>
+      </div>
+  
+      <!-- Event List -->
+      <div class="events">
+        <ng-container *ngIf="dayEvents.length > 0; else noEvents">
+          <div
+            class="event"
+            *ngFor="let ev of dayEvents"
+            (click)="deleteEvent(ev)"
+          >
+            <div class="title">
+              <mat-icon class="material-icons">fiber_manual_record</mat-icon>
+              <h3 class="event-title">{{ ev.title }}</h3>
+            </div>
+            <div class="event-time">
+                <span>{{ ev.timeFrom }} - {{ ev.timeTo }}</span>
+            </div>
+          </div>
+        </ng-container>
+  
+        <ng-template #noEvents>
+          <div class="no-event"><h3>No Events</h3></div>
+        </ng-template>
+      </div>
+  
+      <!-- Add Event Pop-Up (Slides Up from Bottom) -->
+      <div class="add-event-wrapper" [class.active]="addEventOpen">
+        <div class="add-event-header">
+          <div class="title">Add Event</div>
+          <button class="close-btn" (click)="closeAddEvent()">
+            <span class="material-icons">close</span>
+          </button>
+        </div>
+  
+        <div class="add-event-body">
+          <div class="add-event-input">
+            <input
+              type="text"
+              placeholder="Event Name"
+              [(ngModel)]="newEventTitle"
+              maxlength="60"
+            />
+          </div>
+          <div class="add-event-input">
+            <input
+              type="text"
+              placeholder="Event Time From"
+              [(ngModel)]="newEventTimeFrom"
+              (input)="formatTime('from')"
+            />
+          </div>
+          <div class="add-event-input">
+            <input
+              type="text"
+              placeholder="Event Time To"
+              [(ngModel)]="newEventTimeTo"
+              (input)="formatTime('to')"
+            />
+          </div>
+        </div>
+  
+        <div class="add-event-footer">
+          <button (click)="addEvent()">Add Event</button>
+        </div>
+      </div>
+  
+      <!-- Floating Add Button -->
+      <button class="add-event" (click)="toggleAddEvent()">
+        <span class="material-icons">add</span>
+      </button>
+    </div>
+  </div>
+  

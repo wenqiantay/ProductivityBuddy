@@ -12,7 +12,8 @@ public class UserData {
     private Date birthdate;
     private String password;
     private String verificationToken;
-    private boolean isVerified;
+    private int isVerified; 
+    
 
     public String getUserId() {
         return userId;
@@ -63,12 +64,14 @@ public class UserData {
     public void setVerificationToken(String verificationToken) {
         this.verificationToken = verificationToken;
     }
-    public boolean isVerified() {
+ 
+    public int getIsVerified() {
         return isVerified;
     }
-    public void setVerified(boolean isVerified) {
+    public void setIsVerified(int isVerified) {
         this.isVerified = isVerified;
     }
+   
     @Override
     public String toString() {
         return "UserData [userId=" + userId + ", name=" + name + ", username=" + username + ", gender=" + gender

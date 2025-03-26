@@ -14,14 +14,14 @@ export class WebSocketService {
     // Connect to WebSocket server using RxStompService
     connect(): void {
       this.rxStompService.configure({
-        brokerURL: 'ws://localhost:8080/ws',  // WebSocket URL in Spring Boot
+        brokerURL: 'ws://tender-cat-production.up.railway.app/ws',  
         connectHeaders: {},
         debug: (str) => {
           console.log(str); 
         },
-        reconnectDelay: 5000, // Retry every 5 seconds if disconnected
-        heartbeatIncoming: 4000, // Heartbeat from server every 4 seconds
-        heartbeatOutgoing: 4000, // Heartbeat sent to server every 4 seconds
+        reconnectDelay: 5000, 
+        heartbeatIncoming: 4000,
+        heartbeatOutgoing: 4000, 
       });
   
       this.rxStompService.activate(); 

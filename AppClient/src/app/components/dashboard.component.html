@@ -1,19 +1,60 @@
-<div class="body">
-    <div class="container">
-    <div class="todo">
-        <h2>To-do List:</h2>
-        <div class="row">
-            <input type="text" id="input-box" placeholder="Add a new task" [formControl]="input">
-            <button type="button" (click)="addTodo()">Add</button>
+<div class="dashboard-container">
+    <!-- Top greeting and header -->
+    <div class="dashboard-header">
+        <div>
+            <h1>Welcome, {{username}}</h1>
+            <p>What would you like to do today ?</p>
         </div>
-        <ul class="list-container" (click)="handleClick($event)">
-                @for (t of todoList; let idx = $index; track t) {
-                    <li>
-                        {{ t }}
-                        <span><button type="button" (click)="deleteTodo(idx)">X</button></span>
-                    </li>
-                }
-        </ul>
+        <div class="dashboard-icons">
+            <div class="circle">
+                <button type="button" (click)="logout()">
+                    <span class="material-icons">logout</span>
+                    Logout
+                </button>
+            </div>
+        </div>
     </div>
+
+    <!-- Main grid layout -->
+    <div class="dashboard-grid">
+        <!-- Left side: Music player -->
+        <div class="player-panel">
+            <app-music-player></app-music-player>
+        </div>
+
+        <!-- Right side: Todo + Pomodoro on top, Calendar below -->
+        <div class="utility-panel">
+            <div class="todo-pomodoro">
+                <div class="todo-column">
+
+                    <div class="middle-section">
+                        <div class="todo">
+                            <h2>To-do List:</h2>
+                            <div class="row">
+                                <input type="text" id="input-box" placeholder="Add a new task" [formControl]="input">
+                                <button type="button" (click)="addTodo()">Add</button>
+                            </div>
+                            <div class="todo-list-wrapper">
+                                <ul class="todo-list list-container" (click)="handleClick($event)">
+                                    @for (t of todoList; let idx = $index; track t) {
+                                    <li>
+                                        {{ t }}
+                                        <span><button type="button" (click)="deleteTodo(idx)">X</button></span>
+                                    </li>
+                                    }
+                                </ul>
+                                <button type="button" (click)="saveTodos()">Save Todos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pomodoro-column">
+                    <app-pomodoro-timer></app-pomodoro-timer>
+                </div>
+            </div>
+            <div class="calendar-section">
+                <app-event-calendar></app-event-calendar>
+            </div>
+        </div>
     </div>
 </div>

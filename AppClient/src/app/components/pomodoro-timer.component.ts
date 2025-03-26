@@ -14,7 +14,8 @@ export class PomodoroTimerComponent {
   timer: any
   isRunning: boolean = false
   activeMode: string = 'focus'
-  //alarmSound = new Audio('assets/alarm.mp3'); 
+  progressPercent = 100;
+  initialTime = 0;
 
 
   // Pomodoro Timer Codes
@@ -24,17 +25,30 @@ export class PomodoroTimerComponent {
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   }
 
-  startTimer(){
+  startTimer() {
     if (!this.isRunning) {
-      this.isRunning = true
+      this.isRunning = true;
+  
+      if (this.initialTime === 0) {
+        this.initialTime = this.timeLeft;
+      }
+  
       this.timer = setInterval(() => {
         if (this.timeLeft > 0) {
-          this.timeLeft--
+          this.timeLeft--;
+          this.updateProgress();
         } else {
-          this.stopTimer()
-          this.alertMsg(this.activeMode)
+          this.stopTimer();
+          this.alertMsg(this.activeMode);
+          this.progressPercent = 0;
         }
-      }, 1000)
+      }, 1000);
+    }
+  }
+
+  updateProgress() {
+    if (this.initialTime > 0) {
+      this.progressPercent = (this.timeLeft / this.initialTime) * 100;
     }
   }
 
@@ -47,17 +61,20 @@ export class PomodoroTimerComponent {
     }
   }
 
-  resetTimer(){
-    this.stopTimer()
-    if(this.activeMode === 'focus'){
-      this.timeLeft = 25 * 60
+  resetTimer() {
+    this.stopTimer();
+    this.isRunning = false;
+    
+    if (this.activeMode === 'focus') {
+      this.timeLeft = 25 * 60;
     } else if (this.activeMode === 'shortBreak') {
-      this.timeLeft = 5 * 60
-    } else if (this.activeMode === 'longBreak'){
-      this.timeLeft = 30 * 60
+      this.timeLeft = 5 * 60;
+    } else if (this.activeMode === 'longBreak') {
+      this.timeLeft = 30 * 60;
     }
-    this.isRunning = false
-
+  
+    this.initialTime = this.timeLeft;
+    this.progressPercent = 100;
   }
 
   stopTimer() {

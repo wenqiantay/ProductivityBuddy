@@ -67,9 +67,11 @@ public class RegistrationController {
 
     @GetMapping("/api/verify")
     public ResponseEntity<?> verifyEmail(@RequestParam("token") String token) {
-    boolean verified = registrationSvc.verifyUserByToken(token);
+    UserData user = registrationSvc.findByVerificationToken(token);
 
-    if (verified) {
+    if (user != null) {
+        String username = user.getUsername();
+        registrationSvc.verifyUserManually(username);
         return ResponseEntity.ok(Map.of("status", "success", "message", "Email verified"));
     } else {
         return ResponseEntity

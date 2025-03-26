@@ -1,4 +1,4 @@
-<div class="container">
+<div class="pomodoro-container">
     <div class="section-container">
         <button id="focus" class="btn btn-focus" [ngClass]="{ 'active': activeMode === 'focus' }" (click)="focus()">Focus</button>
         <button id="shortbreak" class="btn btn-shortbreak" [ngClass]="{ 'active': activeMode === 'shortBreak' }" (click)="shortBreak()">Short Break</button>
@@ -6,12 +6,20 @@
     </div>
     <div class="time-btn-container">
         <span id="time">{{ formattedTime }}</span>
-        <div class="btn-container">
-            <button id="btn-start" class="show" (click)="startTimer()">Start</button>
-            <button id="btn-pause" class="show" (click)="pauseTimer()">Pause</button>
-            <button id="btn-reset" class="show" (click)="resetTimer()">Reset</button>
+      
+        <!-- Progress bar (if any) -->
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="progressPercent"></div>
         </div>
-    </div>
+      
+        <div class="btn-container">
+          <button id="btn-start" (click)="startTimer()">Start</button>
+          <button id="btn-pause" (click)="pauseTimer()">Pause</button>
+          <button id="btn-reset" (click)="resetTimer()">Reset</button>
+        </div>
+      </div>
+
+    
 </div>
 
 

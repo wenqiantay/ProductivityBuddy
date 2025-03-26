@@ -1,107 +1,221 @@
-.todo {
-    width: 50%;
-    max-width: 500px;
-    background: #FCC7D6;
-    margin: 100px auto 20px 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
-    position: absolute;
-    left: 0;
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
-.container{
-    font-family: sans-serif;
-    
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.row {
+.dashboard-header h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.dashboard-header p {
+    font-size: 16px;
+    color: #888;
+}
+
+.dashboard-icons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Logout Button */
+.dashboard-icons .circle button {
+    background-color: #FF8B8B; 
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: white;
-    border-radius: 30px;
-    padding-left: 20px;
-    margin-bottom: 25px;
+    justify-content: center;
+    gap: 8px; 
+    transition: background 0.3s ease, transform 0.3s ease;
+    border: none;
 }
 
-input {
+/* Hover state for logout button */
+.dashboard-icons .circle button:hover {
+    background-color: #FF5C5C;
+    transform: scale(1.05);
+}
+
+.dashboard-icons .circle button:focus {
+    outline: 2px solid #FF8B8B; 
+}
+
+/* Save Todos Button */
+.todo button {
+    background-color: #d46a8b; 
+    border: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.todo button:hover {
+    background-color: palevioletred;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.player-panel {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.utility-panel {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.todo-pomodoro {
+    display: flex;
+    gap: 20px;
+}
+
+.todo-column, .pomodoro-column {
+    flex: 1;
+}
+
+.todo {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    margin-bottom: 20px;  
+}
+
+.todo-list-wrapper {
+    flex: 1;
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.todo-list-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.todo-list-wrapper::-webkit-scrollbar-thumb {
+    background-color: #d46a8b;
+    border-radius: 10px;
+}
+
+.todo-list-wrapper::-webkit-scrollbar-track {
+    background: #f4cdd7;
+}
+
+.todo-list li {
+    margin: 10px 0;
+}
+
+.todo-list button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pomodoro-column {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Todo List Styles */
+.todo-column {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo {
+    width: 100%;
+    background: #FCC7D6; /* Light pink background matching your design */
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Rows in the todo list */
+.row {
+    display: flex;
+    width: 100%;
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.row input {
     flex: 1;
     border: none;
     outline: none;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 0;
     background: transparent;
-    padding: 10px;
-    font-weight: 14px;
-
+    flex-grow: 1;
+    min-width: 0;
 }
+
 .row button {
     border: none;
     outline: none;
-    padding: 16px 50px;
-    background: palevioletred; 
+    padding: 16px 40px;
+    background: #d46a8b;
     color: #fff;
     font-size: 16px;
+    font-weight: 500;
+    border-radius: 0;
     cursor: pointer;
-    border-radius: 40px;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .row button:hover {
-    background: lightpink;
+    background: palevioletred;
 }
 
-ul li {
-    list-style: none;
-    font-size: 16px;
-    padding: 15px 8px 12px 50px;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
-}
-
-ul li::before {
-    content: '';
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    background-image: url(/images/unchecked.png);
-    background-size: cover;
-    background-position: center;
-    top: 12px;
-    left: 1px;
-}
-
-ul li.checked {
-    color: #555;
-    text-decoration: line-through;
-}
-
-ul li.checked::before{
-    background-image: url(/images/checked.png);
-}
-
-ul li span {
-    position: absolute;
-    right: 0;
-    top: 5px;
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-    color: #555;
-    line-height: 40px;
-    text-align: center;
-}
-
-ul li span button {
-    border: none;
-    outline: none;
-    padding: 10px 15px;
-    background: palevioletred; 
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 40px;
-}
-
-ul li span button:hover {
-    background: lightpink;
-}

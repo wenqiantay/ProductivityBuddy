@@ -13,6 +13,15 @@ export interface UserData {
 
 }
 
+export interface UserDetail {
+  userId: string
+  username: string
+  email: string
+  birthdate: string 
+  gender: string
+  verified: number
+}
+
 export interface CurrentSong {
     songId: string
     imageUrl: string
@@ -36,4 +45,30 @@ export interface PlayBackState {
 export interface Login {
     username: string
     password: string
+}
+
+
+//Calendar
+export interface CalendarEvent {
+    eventId?: string
+    userId: string
+    title: string
+    timeFrom: string
+    timeTo: string
+    eventDate: string //ISO format : 'YYYY-MM-DD'
+}
+
+export interface Day {
+    date: number;
+    isToday: boolean;
+    isActive: boolean;
+    isPrev: boolean;
+    isNext: boolean;
+    hasEvent: boolean;
+}
+
+export interface EventItem {
+    id: string;
+  title: string;
+  time: string;
 }

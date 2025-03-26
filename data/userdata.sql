@@ -14,3 +14,20 @@ create table user_data (
 	
     primary key(userid)
 );
+
+create table events (
+	event_id varchar(100) primary key,
+    user_id varchar(100),
+    title varchar(100),
+    time_from varchar(20),
+    time_to varchar(20),
+    event_date date not null,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user_data(userid) ON DELETE CASCADE
+);
+
+CREATE TABLE todos (
+  todo_id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36),
+  content TEXT,
+  CONSTRAINT fk2_user FOREIGN KEY (user_id) REFERENCES user_data(userid)
+);
